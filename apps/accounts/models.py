@@ -10,23 +10,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         verbose_name=_('username'),
         max_length=60,
-<<<<<<< HEAD
         unique=True
     )
     email = models.EmailField(
         verbose_name=_('email'),
         unique=True
-=======
-        unique=True,
-        blank=False,
-        null=False
-    )
-    email = models.EmailField(
-        verbose_name=_('email'),
-        unique=True,
-        blank=False,
-        null=False
->>>>>>> 4b6ed126233285efef0f86abd3ff9e8b1ab2988f
     )
     is_staff = models.BooleanField(
         verbose_name=_('is staff'),
@@ -47,11 +35,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def __str__(self):
-<<<<<<< HEAD
         return self.username
-=======
-        return f'{self.username} ({self.email})'
->>>>>>> 4b6ed126233285efef0f86abd3ff9e8b1ab2988f
 
     def __unicode__(self):
         return self
