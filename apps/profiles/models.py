@@ -1,3 +1,5 @@
+import uuid
+
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -6,9 +8,9 @@ from django.utils.translation import gettext_lazy as _
 class Profile(models.Model):
     uuid = models.UUIDField(
         verbose_name=_('uuid'),
+        default=uuid.uuid4,
         unique=True,
-        blank=False,
-        null=False
+        editable=False
     )
     first_name = models.CharField(
         verbose_name=_('first name'),
