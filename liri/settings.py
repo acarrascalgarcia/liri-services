@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Local Apps
+<<<<<<< HEAD
     'apps.utils',
     'apps.countries',
+=======
+>>>>>>> 4b6ed126233285efef0f86abd3ff9e8b1ab2988f
     'apps.accounts',
     'apps.profiles'
 ]
