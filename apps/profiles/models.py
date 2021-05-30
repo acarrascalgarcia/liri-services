@@ -4,14 +4,10 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from apps.utils.models import BaseDatetimeModelMixin, UUIDModelMixin
 
-class Profile(models.Model):
-    uuid = models.UUIDField(
-        verbose_name=_('uuid'),
-        default=uuid.uuid4,
-        unique=True,
-        editable=False
-    )
+
+class Profile(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
     first_name = models.CharField(
         verbose_name=_('first name'),
         max_length=30,

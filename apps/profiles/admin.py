@@ -11,7 +11,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = (
         'uuid',
         'first_name', 'middle_name', 'last_name',
-        'user',
+        'user', 'created_at', 'updated_at',
     )
     list_filter = ()
     fieldsets = (
