@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     # Local Apps
     'apps.utils',
     'apps.countries',
+    'apps.wallets',
     'apps.accounts',
-    'apps.profiles'
+    'apps.profiles',
 ]
 
 MIDDLEWARE = [
