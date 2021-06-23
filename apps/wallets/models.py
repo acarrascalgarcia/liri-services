@@ -30,7 +30,6 @@ class Entity(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
     def __unicode__(self):
         return self
 
-    
     class Meta:
         verbose_name = _('entity')
         verbose_name_plural = _('entities')
@@ -60,7 +59,6 @@ class Wallet(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
     def __unicode__(self):
         return self
 
-    
     class Meta:
         verbose_name = _('wallet')
         verbose_name_plural = _('wallets')
