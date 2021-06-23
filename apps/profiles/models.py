@@ -28,6 +28,18 @@ class Profile(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
         related_name='profile',
         on_delete=models.DO_NOTHING
     )
+    labels = models.ManyToManyField(
+        'categories.Label',
+        through='profiles.ProfileLabel',
+        related_name='labels',
+        blank=True
+    )
+    categories = models.ManyToManyField(
+        'categories.Category',
+        through='profiles.ProfileCategory',
+        related_name='categories',
+        blank=True
+    )
 
     def __str__(self):
         return self.get_full_name()
@@ -42,3 +54,53 @@ class Profile(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
     class Meta:
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')
+
+
+class ProfileLabel(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
+    profile = models.ForeignKey(
+        'profiles.Profile',
+        verbose_name=_('profile'),
+        related_name='profile_labels',
+        on_delete=models.DO_NOTHING
+    )
+    label = models.ForeignKey(
+        'categories.Label',
+        verbose_name=_('label'),
+        related_name='profile_labels',
+        on_delete=models.DO_NOTHING
+    )
+
+    def __str__(self):
+        return f'{self.profile} {self.label}'
+
+    def __unicode__(self):
+        return self
+
+    class Meta:
+        verbose_name = _('profile label')
+        verbose_name_plural = _('profile labels')
+
+
+class ProfileCategory(BaseDatetimeModelMixin, UUIDModelMixin, models.Model):
+    profile = models.ForeignKey(
+        'profiles.Profile',
+        verbose_name=_('profile'),
+        related_name='profile_categories',
+        on_delete=models.DO_NOTHING
+    )
+    category = models.ForeignKey(
+        'categories.Category',
+        verbose_name=_('category'),
+        related_name='profile_categories',
+        on_delete=models.DO_NOTHING
+    )
+
+    def __str__(self):
+        return f'{self.profile} {self.category}'
+
+    def __unicode__(self):
+        return self
+
+    class Meta:
+        verbose_name = _('profile category')
+        verbose_name_plural = _('profile categories')
